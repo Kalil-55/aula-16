@@ -7,9 +7,35 @@ class Pedido:
 
     def Processar_envio(self, processar_o_envio: bool):
         self.processar_o_envio = processar_o_envio
-        print("Enviando pedido de produto genérico {self.processar_o_envio}.")
+        print(f"Enviando pedido de produto genérico {self.processar_o_envio}.")
 
 class PedidoEletronico(Pedido):
-    def
+    def __init__(self, nome_produto, preco, serial_number: int):
+        self.serial_number = serial_number
+        super().__init__(nome_produto, preco)
+        
+    def Processar_envio(self, processar_o_envio):
+        print(f"Adicionando seguro e número de série {self.serial_number} ao pacote.")
+
+class PedidoRoupa(Pedido):
+    def __init__(self, nome_produto, preco, tamanho:str):
+        self.tamanho = tamanho
+        super().__init__(nome_produto, preco)
+
+    def Processar_envio(self, processar_o_envio):
+        print(f"Adicionando embalagem especial para vestuário. Tamanho - {self.tamanho}")
+
+
+pedido1 = Pedido("colher", 55.2)
+
+pedido1.Processar_envio(False)
+
+pedido2 = PedidoEletronico("faca", 30, 279773)
+
+pedido2.Processar_envio(PedidoEletronico)
+
+pedido3 = PedidoRoupa("chocolate", 12, "G")
+
+pedido3.Processar_envio(PedidoRoupa)
         
        
